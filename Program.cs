@@ -22,6 +22,7 @@ app.UseCors(MyAllowSpecificOrigins);
     app.UseSwaggerUI();
 //}
 
+app.MapGet("/", () => "to do list api is running");
 
 app.MapGet("/items", (ToDoDBContext context) =>
 {
@@ -55,7 +56,5 @@ app.MapDelete("/items/{id}", async(ToDoDBContext context, int id)=>{
 
     return Results.NoContent();
 });
-
-app.MapGet("/", () => "to do list api is running");
 
 app.Run();
