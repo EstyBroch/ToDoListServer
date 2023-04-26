@@ -16,11 +16,11 @@ builder.Services.AddDbContext<ToDoDBContext>();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 app.UseCors(MyAllowSpecificOrigins);
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 
 app.MapGet("/items", (ToDoDBContext context) =>
@@ -55,5 +55,7 @@ app.MapDelete("/items/{id}", async(ToDoDBContext context, int id)=>{
 
     return Results.NoContent();
 });
+
+app.MapGet("/", () => "to do list api is running");
 
 app.Run();
